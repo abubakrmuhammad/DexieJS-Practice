@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>DexieJS</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/dexie.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- -------------------------------------  -->
+      <!-- --------------- TITLE ---------------  -->
+      <!-- -------------------------------------  -->
+
+      <h1 class="main__title">DexieJS</h1>
+      <p class="main__description">A Minimalistic Wrapper for IndexedDB</p>
+
+      <!-- -------------------------------------  -->
+      <!-- ---------- CONTROL BUTTONS ----------  -->
+      <!-- -------------------------------------  -->
+
+      <div class="control__buttons">
+        <button class="btn get__friends-btn">Get Friends</button>
+        <button class="btn add__friends-btn">Add Friend</button>
+        <button class="btn del__friends-btn">Delete Friends</button>
+        <button class="btn upd__friends-btn">Update Friends</button>
+      </div>
+
+      <!-- -------------------------------------  -->
+      <!-- ---------- ADD FRIEND BOX -----------  -->
+      <!-- -------------------------------------  -->
+
+      <div class="add__friends-box">
+        <span class="close__box-btn">&times;</span>
+        <h2 class="add__friends-form--title">Add Friend</h2>
+
+        <form class="add__friends-form">
+          <fieldset class="add__friends-form--name-box">
+            <label for="name" class="label-custom add__friends-form--label"> Name </label
+            ><input
+              type="text"
+              class="input-custom add__friends-form--first__name"
+              id="name"
+              placeholder="First Name"
+              data-required
+            /><input
+              type="text"
+              class="input-custom add__friends-form--last__name"
+              placeholder="Last Name (Optional)"
+            />
+          </fieldset>
+
+          <fieldset class="add__friends-form--age-box">
+            <label for="age" class="label-custom add__friends-form--age__label">Age</label
+            ><input
+              type="number"
+              max="120"
+              min="3"
+              class="input-custom  add__friends-form--age"
+              id="age"
+              placeholder="Age"
+              data-required
+            />
+          </fieldset>
+
+          <input type="button" class="btn form__cancel-btn" value="Cancel" />
+          <input type="submit" class="btn form__submit-btn" value="Add Friend" />
+        </form>
+      </div>
+
+      <!-- -------------------------------------  -->
+      <!-- --------- DELETE FRIEND BOX ---------  -->
+      <!-- -------------------------------------  -->
+
+      <div class="del__friends-box">
+        <span class="close__box-btn">&times;</span>
+        <h2 class="del__friends-form--title">Delete Friend</h2>
+
+        <div class="loader hidden">
+          <div class="loader__checkmark hidden"></div>
+          <div class="loader__crossmark hidden">
+            <div class="stick stick1"></div>
+            <div class="stick stick2"></div>
+          </div>
+        </div>
+
+        <form class="del__friends-form">
+          <fieldset class="del__friends-form--single">
+            <legend>Single</legend>
+            <select type="text" class="input-custom del__friends-form--name" placeholder="Full Name" data-required>
+              <option value="" selected>Select a Friend</option>
+              <optgroup class="del__friends-form-friends__list">
+                <!-- <option value="%id%">%id%. %fullName%</option> -->
+              </optgroup>
+            </select>
+          </fieldset>
+          <!-- 
+          <fieldset class="del__friends-form--multiple">
+            <legend>Multiple</legend>
+            <label for="age" class="label-custom del__friends-form--age__label">Age</label
+            ><input type="number" class="input-custom  del__friends-form--age" id="age" placeholder="Age" />
+          </fieldset> -->
+
+          <input type="button" class="btn form__cancel-btn" value="Cancel" />
+          <input type="submit" class="btn form__submit-btn" value="Delete Friend" />
+        </form>
+      </div>
+
+      <!-- -------------------------------------  -->
+      <!-- --------- UPDATE FRIEND BOX ---------  -->
+      <!-- -------------------------------------  -->
+
+      <div class="upd__friends-box">
+        <span class="close__box-btn">&times;</span>
+        <h2 class="upd__friends-form--title">Update Friend</h2>
+
+        <form class="upd__friends-form">
+          <fieldset class="upd__friends-form--single">
+            <legend>Friend</legend>
+            <select type="text" class="input-custom upd__friends-form--name" placeholder="Full Name" data-required>
+              <option value="" selected>Select a Friend</option>
+              <optgroup class="upd__friends-form-friends__list">
+                <!-- <option value="%id%">%id%. %fullName%</option> -->
+              </optgroup>
+            </select>
+          </fieldset>
+
+          <div class="loader hidden">
+            <div class="loader__checkmark hidden"></div>
+            <div class="loader__crossmark hidden">
+              <div class="stick stick1"></div>
+              <div class="stick stick2"></div>
+            </div>
+          </div>
+
+          <fieldset class="upd__friends-form--updates">
+            <legend>Updates</legend>
+            <label for="name" class="label-custom upd__friends-form--label"> Name </label
+            ><input
+              type="text"
+              class="input-custom upd__friends-form--first__name"
+              id="name"
+              placeholder="First Name"
+            /><input
+              type="text"
+              class="input-custom upd__friends-form--last__name"
+              placeholder="Last Name (Optional)"
+            />
+
+            <label for="age" class="label-custom upd__friends-form--label">Age</label
+            ><input
+              type="number"
+              max="120"
+              min="3"
+              class="input-custom  upd__friends-form--age"
+              id="age"
+              placeholder="Age"
+            />
+          </fieldset>
+          <div class="upd__friends-form-control__buttons">
+            <input type="button" class="btn form__cancel-btn" value="Cancel" />
+            <input type="submit" class="btn form__submit-btn  upd__friends-btn" value="Update Friend" />
+          </div>
+        </form>
+      </div>
+
+      <!-- -------------------------------------  -->
+      <!-- --------------- MODAL ---------------  -->
+      <!-- -------------------------------------  -->
+
+      <div class="modal hidden">
+        <div class="loader hidden">
+          <div class="loader__checkmark hidden"></div>
+          <div class="loader__crossmark hidden">
+            <div class="stick stick1"></div>
+            <div class="stick stick2"></div>
+          </div>
+        </div>
+        <h2 class="modal__title">Processing...</h2>
+        <p class="modal__description">Description for the model.</p>
+      </div>
+
+      <!-- -------------------------------------  -->
+      <!-- -------------- OUTPUT ---------------  -->
+      <!-- -------------------------------------  -->
+
+      <div class="output">
+        <h2 class="output__title">Output</h2>
+        <div class="loader hidden">
+          <div class="loader__checkmark hidden"></div>
+          <div class="loader__crossmark hidden">
+            <div class="stick stick1"></div>
+            <div class="stick stick2"></div>
+          </div>
+        </div>
+        <ol class="friends-list">
+          <!-- <li class="friends-list__item">
+            <strong>Full Name:</strong> <span class="friend__name">Muhammad Ahmad</span> &nbsp; <strong>Age:</strong>
+            <span class="friend__age">18</span>
+          </li> -->
+        </ol>
+      </div>
+    </div>
+
+    <div class="backdrop hidden"></div>
+  </body>
+
+  <script src="js/db.js"></script>
+  <script src="js/UI.js"></script>
+  <script src="js/app.js"></script>
+</html>
